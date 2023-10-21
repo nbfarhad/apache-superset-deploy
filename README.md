@@ -120,7 +120,9 @@ apt install pkg-config #run this in other terminal, not in your virtualenv
 pip install mysqlclient #run in your virtualenv
 ```
 > if you found more difficulties to install it you can check below link for any clue/solution
+
 > Reference: https://stackoverflow.com/questions/76585758/mysqlclient-cannot-install-via-pip-cannot-find-pkg-config-name#:~:text=The%20error%20you%20are%20encountering,build%20the%20mysqlclient%20Python%20package.
+
 > Create an admin user to login, add a username in the input field, First name, lastname, email and password)
 ```
 superset fab create-admin
