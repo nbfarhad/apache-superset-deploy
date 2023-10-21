@@ -2,11 +2,11 @@
 This demonatration was for one of my respective client. I have documented it for everyone who needs.
 Apache Superset™ is an open-source modern data exploration and visualization platform.
 You can get details from below link.
-https://superset.apache.org/docs/intro
+- https://superset.apache.org/docs/intro
 
 For production use it needs different type of software to setup, config and connect, but we are going to do a development setup.
 There are lot of option to do it(docker, pypi or others) but we are going to start from sratch.
-https://superset.apache.org/docs/installation/installing-superset-from-scratch/
+- https://superset.apache.org/docs/installation/installing-superset-from-scratch/
 
 ## We are going to use an Ubuntu 23.04 vm for this installation.
 1. Run below command to install necessary software packages.
