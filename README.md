@@ -12,11 +12,13 @@ https://superset.apache.org/docs/installation/installing-superset-from-scratch/
 1. Run below command to install necessary software packages.
 ```
 apt install build-essential libssl-dev libffi-dev python3-dev python3-pip libsasl2-dev libldap2-dev default-libmysqlclient-dev
-    apt install mysql-server
-    mysql_secure_installation
+apt install mysql-server
+mysql_secure_installation
 ```
-> (set the config as per your need)
-#login to mysql create a user, db and set the user permission to access the db:
+> (set the mysql config as per your need)
+
+- login to mysql, create a user, db and set the user permission to access the db:
+```
 mysql> create user 'superset'@'localhost' identified by 'password';
 Query OK, 0 rows affected (0.03 sec)
 
@@ -32,31 +34,40 @@ Query OK, 1 row affected (0.00 sec)
 #Create a second db for your test data
 mysql> create database rnd_superset_data;
 Query OK, 1 row affected (0.00 sec)
+```
 
 3. Let's also make sure we have the latest version of pip and setuptools:
+4. ```
 pip install --upgrade setuptools pip
-
-4. Install python virtual environment
+```
+5. Install python virtual environment
+```
 pip install virtualenv
-
-5. Lets asume you are logged in as root and you are in the root directory, you can check your current directory by pwd command.
+```
+6. Lets asume you are logged in as root and you are in the root directory, you can check your current directory by pwd command.
+```
 pwd
 mkdir -p ~/superset
 cd ~/superset
 python3 -m venv venv
 . venv/bin/activate
-
-6. Installling superset in the virtual environment:
+```
+7. Installling superset in the virtual environment:
+```
 pip install apache-superset
-
-6.#After installing superset we need to do some other config to run our app:
-Reference: https://superset.apache.org/docs/installation/configuring-superset/
+```
+6. After installing superset we need to do some other config to run our app:
+> Reference: https://superset.apache.org/docs/installation/configuring-superset/
+```
 mkdir -p ~/superset/venv/app
-nano ~/superset/venv/app/superset_config.py (put below config in the file and save it)
+nano ~/superset/venv/app/superset_config.py
+```
+> (put below config in the file and save it)
+
 #We need to create a strong key to define for the SECRET_KEY otherwise you will get messege that superset is using default secret and superset will not run. To generate a string ke you can use:
-
+```
 openssl rand -base64 42
-
+```
 ..............................superset_config.py.................................
 `#Superset specific config
 ROW_LIMIT = 5000
