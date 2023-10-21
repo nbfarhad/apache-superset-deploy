@@ -107,7 +107,7 @@ MAPBOX_API_KEY = ''
 # Set this otherwise you will face login issue after run in development mode.
 TALISMAN_ENABLED = False
 ```
-.........................superset_config.py....................................
+
 
 7. Initialize the database and Create an admin user in your metadata database (use `admin` as username to be able to load the examples)
 ```
