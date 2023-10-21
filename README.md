@@ -10,10 +10,11 @@ https://superset.apache.org/docs/installation/installing-superset-from-scratch/
 
 ## We are going to use an Ubuntu 23.04 vm for this installation.
 1. Run below command to install necessary software packages.
-    apt install build-essential libssl-dev libffi-dev python3-dev python3-pip libsasl2-dev libldap2-dev default-libmysqlclient-dev
+```
+apt install build-essential libssl-dev libffi-dev python3-dev python3-pip libsasl2-dev libldap2-dev default-libmysqlclient-dev
     apt install mysql-server
     mysql_secure_installation
-    this is a test code    
+```
 > (set the config as per your need)
 #login to mysql create a user, db and set the user permission to access the db:
 mysql> create user 'superset'@'localhost' identified by 'password';
