@@ -37,10 +37,10 @@ Query OK, 1 row affected (0.00 sec)
 ```
 
 3. Let's also make sure we have the latest version of pip and setuptools:
-4. ```
+```
 pip install --upgrade setuptools pip
 ```
-5. Install python virtual environment
+4. Install python virtual environment
 ```
 pip install virtualenv
 ```
@@ -58,6 +58,7 @@ pip install apache-superset
 ```
 6. After installing superset we need to do some other config to run our app:
 > Reference: https://superset.apache.org/docs/installation/configuring-superset/
+
 ```
 mkdir -p ~/superset/venv/app
 nano ~/superset/venv/app/superset_config.py
@@ -65,6 +66,7 @@ nano ~/superset/venv/app/superset_config.py
 > (put below config in the file and save it)
 
 #We need to create a strong key to define for the SECRET_KEY otherwise you will get messege that superset is using default secret and superset will not run. To generate a string ke you can use:
+
 ```
 openssl rand -base64 42
 ```
