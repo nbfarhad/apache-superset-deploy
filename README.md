@@ -61,14 +61,18 @@ pip install apache-superset
 
 ```
 mkdir -p ~/superset/venv/app
-nano ~/superset/venv/app/superset_config.py
 ```
 > (put below config in the file and save it)
 > We need to create a strong key to define for the SECRET_KEY otherwise you will get messege that superset is using default secret and superset will not run. To generate a string ke you can use:
 ```
 openssl rand -base64 42
 ```
-..............................superset_config.py.................................
+> it will generate a KEY like 78dkudoZ9wk+CD6aNBfuM5QaLtJSMv4o5M+Ht8hBjA1HuDlzR9FBmQ1W, we will use this key in our custom config file
+
+```
+
+```
+nano ~/superset/venv/app/superset_config.py
 ```
 # Superset specific config
 ROW_LIMIT = 5000
