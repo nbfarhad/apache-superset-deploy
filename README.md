@@ -55,7 +55,7 @@ nano ~/superset/venv/app/superset_config.py (put below config in the file and sa
 openssl rand -base64 42
 
 ..............................superset_config.py.................................
-#Superset specific config
+`#Superset specific config
 ROW_LIMIT = 5000
 
 #Flask App Builder configuration
@@ -87,7 +87,7 @@ WTF_CSRF_TIME_LIMIT = 60 * 60 * 24 * 365
 #Set this API key to enable Mapbox visualizations
 MAPBOX_API_KEY = ''
 #Set this otherwise you will face login issue after run in development mode.
-TALISMAN_ENABLED = False
+TALISMAN_ENABLED = False`
 .........................superset_config.py....................................
 
 7. Initialize the database and Create an admin user in your metadata database (use `admin` as username to be able to load the examples)
