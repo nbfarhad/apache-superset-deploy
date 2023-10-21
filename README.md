@@ -64,70 +64,83 @@ mkdir -p ~/superset/venv/app
 nano ~/superset/venv/app/superset_config.py
 ```
 > (put below config in the file and save it)
-
-#We need to create a strong key to define for the SECRET_KEY otherwise you will get messege that superset is using default secret and superset will not run. To generate a string ke you can use:
-
+> We need to create a strong key to define for the SECRET_KEY otherwise you will get messege that superset is using default secret and superset will not run. To generate a string ke you can use:
 ```
 openssl rand -base64 42
 ```
 ..............................superset_config.py.................................
-`#Superset specific config
+```
+# Superset specific config
 ROW_LIMIT = 5000
 
-#Flask App Builder configuration
-#Your App secret key will be used for securely signing the session cookie
-#and encrypting sensitive information on the database
-#Make sure you are changing this key for your deployment with a strong key.
-#Alternatively you can set it with `SUPERSET_SECRET_KEY` environment variable.
-#You MUST set this for production environments or the server will not refuse
-#to start and you will see an error in the logs accordingly.
+# Flask App Builder configuration
+# Your App secret key will be used for securely signing the session cookie
+# and encrypting sensitive information on the database
+# Make sure you are changing this key for your deployment with a strong key.
+# Alternatively you can set it with `SUPERSET_SECRET_KEY` environment variable.
+# You MUST set this for production environments or the server will not refuse
+# to start and you will see an error in the logs accordingly.
 SECRET_KEY = '78dkudoZ9wk+CD6aNBfuM5QaLtJSMv4o5M+Ht8hBjA1HuDlzR9FBmQ1W'
 
-#The SQLAlchemy connection string to your database backend
-#This connection defines the path to the database that stores your
-#superset metadata (slices, connections, tables, dashboards, ...).
-#Note that the connection information to connect to the datasources
-#you want to explore are managed directly in the web UI
-#The check_same_thread=false property ensures the sqlite client does not attempt
-#to enforce single-threaded access, which may be problematic in some edge cases
-#SQLALCHEMY_DATABASE_URI = 'sqlite:////path/to/superset.db?check_same_thread=false'
+# The SQLAlchemy connection string to your database backend
+# This connection defines the path to the database that stores your
+# superset metadata (slices, connections, tables, dashboards, ...).
+# Note that the connection information to connect to the datasources
+# you want to explore are managed directly in the web UI
+# the check_same_thread=false property ensures the sqlite client does not attempt
+# to enforce single-threaded access, which may be problematic in some edge cases
+# SQLALCHEMY_DATABASE_URI = 'sqlite:////path/to/superset.db?check_same_thread=false'
 SQLALCHEMY_DATABASE_URI = 'mysql://username:password@localhost/dbname'
 
-#Flask-WTF flag for CSRF
+# Flask-WTF flag for CSRF
 WTF_CSRF_ENABLED = False
-#Add endpoints that need to be exempt from CSRF protection
+# Add endpoints that need to be exempt from CSRF protection
 WTF_CSRF_EXEMPT_LIST = []
-#A CSRF token that expires in 1 year
+# A CSRF token that expires in 1 year
 WTF_CSRF_TIME_LIMIT = 60 * 60 * 24 * 365
 
-#Set this API key to enable Mapbox visualizations
+# Set this API key to enable Mapbox visualizations
 MAPBOX_API_KEY = ''
-#Set this otherwise you will face login issue after run in development mode.
-TALISMAN_ENABLED = False`
+# Set this otherwise you will face login issue after run in development mode.
+TALISMAN_ENABLED = False
+```
 .........................superset_config.py....................................
 
 7. Initialize the database and Create an admin user in your metadata database (use `admin` as username to be able to load the examples)
+```
 export FLASK_APP=superset
 superset db upgrade
-#Note at this point you can se some error that mysqlclient not found or something, you need to install it if so:
+```
+> Note at this point you can se some error that mysqlclient not found or something, you need to install it if so:
+```
 apt install pkg-config #run this in other terminal, not in your virtualenv
 pip install mysqlclient #run in your virtualenv
-#if you found more difficulties to install it you can check below link for any clue/solution
-https://stackoverflow.com/questions/76585758/mysqlclient-cannot-install-via-pip-cannot-find-pkg-config-name#:~:text=The%20error%20you%20are%20encountering,build%20the%20mysqlclient%20Python%20package.
-#add a username in the input field, First name, lastname, email and password)
+```
+> if you found more difficulties to install it you can check below link for any clue/solution
+> Reference: https://stackoverflow.com/questions/76585758/mysqlclient-cannot-install-via-pip-cannot-find-pkg-config-name#:~:text=The%20error%20you%20are%20encountering,build%20the%20mysqlclient%20Python%20package.
+> Create an admin user to login, add a username in the input field, First name, lastname, email and password)
+```
 superset fab create-admin
-#Load some data to play with
+```
+> Load some data to play with
+```
 superset load_examples
-#Create default roles and permissions
+```
+> Create default roles and permissions
+```
 superset init
-
+```
 8. To start a development web server on port 8088, use -p to bind to another port and use --host to allow from all or specific IP
+```
 superset run -p 8088 --with-threads --reload --debugger #it will run on localhost only
+```
+or
+```
 superset run -p 8088 --host=0.0.0.0 --with-threads --reload --debugger #it will allow all to browse use http://IP:PORT
-
+```
 9. Lets login and explore. You can add your test data from the top right corner:
-Settings > Database Connections > DATABASE > MySQL > add connection details and test connection
-Note: You already have example data loaded during insatllation, it is stored in sqlite db by default. You can download example data also and import those in your mysql db.
+- Settings > Database Connections > DATABASE > MySQL > add connection details and test connection
+> Note: You already have example data loaded during insatllation, it is stored in sqlite db by default. You can download example data also and import those in your mysql db.
 
 Thanks, hope this gude will help to understand the apache superset setup.
 
