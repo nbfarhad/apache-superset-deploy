@@ -70,9 +70,8 @@ openssl rand -base64 42
 > it will generate a KEY like 78dkudoZ9wk+CD6aNBfuM5QaLtJSMv4o5M+Ht8hBjA1HuDlzR9FBmQ1W, we will use this key in our custom config file
 
 ```
-
-```
 nano ~/superset/venv/app/superset_config.py
+```
 ```
 # Superset specific config
 ROW_LIMIT = 5000
